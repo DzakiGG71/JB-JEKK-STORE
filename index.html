@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JB JEKK STORE</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg1">
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo">
+      🔥 JB JEKK STORE
+    </div>
+
+    <div class="header-buttons">
+
+      <!-- LOGIN -->
+      <button
+        class="admin-btn"
+        id="loginBtn"
+        onclick="openLogin()"
+      >
+        Login Admin
+      </button>
+
+      <!-- TAMBAH PRODUK -->
+      <button
+        class="admin-btn hidden"
+        id="addProductBtn"
+        onclick="openAdminPanel()"
+      >
+        Tambah Produk
+      </button>
+
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1>Selamat Datang di JB JEKK STORE</h1>
+    <p>Tempat JB keren, aman & terpercaya 😎</p>
+  </section>
+
+  <!-- MENU -->
+  <section class="menu">
+
+    <!-- JUAL -->
+    <div class="card jual-card">
+      <h2>🛒 Jual</h2>
+      <p>Hubungi seller</p>
+
+      <a
+        href="https://wa.me/628131123927"
+        target="_blank"
+      >
+        <button class="buy-btn">
+          WA 1
+        </button>
+      </a>
+
+      <a
+        href="https://wa.me/62895376735500"
+        target="_blank"
+      >
+        <button class="buy-btn">
+          WA 2
+        </button>
+      </a>
+    </div>
+
+    <!-- BELI -->
+    <div
+      class="card"
+      onclick="scrollToProducts()"
+    >
+      <h2>🛍️ Beli</h2>
+      <p>Lihat produk realtime</p>
+    </div>
+
+    <!-- GRUB -->
+    <div
+      class="card"
+      onclick="openGroup()"
+    >
+      <h2>👥 Grub</h2>
+      <p>Gabung grup WhatsApp</p>
+    </div>
+
+    <!-- DONASI -->
+    <div
+      class="card"
+      onclick="openDonasi()"
+    >
+      <h2>💸 Donasi</h2>
+      <p>Dukung kami</p>
+    </div>
+
+  </section>
+
+  <!-- TITLE -->
+  <div class="section-title">
+    🔥 Produk Realtime
+  </div>
+
+  <!-- PRODUK -->
+  <div
+    class="products"
+    id="products"
+  >
+  </div>
+
+  <!-- GANTI BG -->
+  <button
+    class="bg-btn"
+    onclick="changeBg()"
+  >
+    🎨
+  </button>
+
+  <!-- MODAL LOGIN -->
+  <div
+    class="modal"
+    id="loginModal"
+  >
+    <div class="modal-content">
+
+      <h2>Login Admin</h2>
+
+      <input
+        type="text"
+        id="username"
+        placeholder="Username"
+      >
+
+      <input
+        type="password"
+        id="password"
+        placeholder="Password"
+      >
+
+      <button
+        class="save-btn"
+        onclick="loginAdmin()"
+      >
+        Login
+      </button>
+
+    </div>
+  </div>
+
+  <!-- MODAL TAMBAH PRODUK -->
+  <div
+    class="modal"
+    id="adminPanel"
+  >
+    <div class="modal-content">
+
+      <h2>Tambah Produk</h2>
+
+      <input
+        type="text"
+        id="title"
+        placeholder="Nama Produk"
+      >
+
+      <textarea
+        id="desc"
+        placeholder="Deskripsi Produk"
+      ></textarea>
+
+      <!-- UPLOAD GAMBAR STORAGE -->
+      <input
+        type="file"
+        id="img"
+        accept="image/*"
+      >
+
+      <button
+        class="save-btn"
+        onclick="addProduct()"
+      >
+        Tambah Produk
+      </button>
+
+    </div>
+  </div>
+
+  <!-- JS -->
+  <script
+    type="module"
+    src="script.js"
+  ></script>
+
+</body>
+</html>
