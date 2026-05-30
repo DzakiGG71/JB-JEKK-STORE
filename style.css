@@ -1,4 +1,7 @@
-/* RESET */
+/* ==========================
+   RESET
+========================== */
+
 *{
   margin:0;
   padding:0;
@@ -8,55 +11,100 @@
 
 body{
   min-height:100vh;
-  color:white;
   overflow-x:hidden;
+  color:white;
   transition:0.6s;
 }
 
-/* BACKGROUND */
+/* ==========================
+   BACKGROUND
+========================== */
+
 .bg1{
-  background:linear-gradient(135deg,#111,#1f1f1f);
+  background:
+  linear-gradient(
+    135deg,
+    #111111,
+    #1f1f1f
+  );
 }
 
 .bg2{
-  background:linear-gradient(135deg,#001f3f,#0074D9);
+  background:
+  linear-gradient(
+    135deg,
+    #001f3f,
+    #0074D9
+  );
 }
 
 .bg3{
-  background:linear-gradient(135deg,#2E004F,#A100FF);
+  background:
+  linear-gradient(
+    135deg,
+    #2E004F,
+    #A100FF
+  );
 }
 
 .bg4{
-  background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+  background:
+  linear-gradient(
+    135deg,
+    #0f2027,
+    #203a43,
+    #2c5364
+  );
 }
 
-/* HEADER */
+/* ==========================
+   HEADER
+========================== */
+
 header{
   position:sticky;
   top:0;
   z-index:999;
+
   display:flex;
   justify-content:space-between;
   align-items:center;
+
   padding:18px;
-  backdrop-filter:blur(15px);
-  background:rgba(255,255,255,0.08);
-  border-bottom:1px solid rgba(255,255,255,0.1);
+
+  backdrop-filter:blur(14px);
+
+  background:
+  rgba(255,255,255,0.08);
+
+  border-bottom:
+  1px solid
+  rgba(255,255,255,0.1);
 }
 
 .logo{
   font-size:24px;
   font-weight:700;
-  animation:glow 2s infinite alternate;
+
+  animation:
+  glow 2s
+  infinite alternate;
 }
 
 @keyframes glow{
+
   from{
-    text-shadow:0 0 8px #00e5ff;
+    text-shadow:
+    0 0 8px
+    #00e5ff;
   }
+
   to{
-    text-shadow:0 0 25px #00e5ff;
+    text-shadow:
+    0 0 25px
+    #00e5ff;
   }
+
 }
 
 .header-buttons{
@@ -64,10 +112,13 @@ header{
   gap:10px;
 }
 
-/* BUTTON */
+/* ==========================
+   BUTTON
+========================== */
+
 .admin-btn,
-.save-btn,
-.buy-btn{
+.buy-btn,
+.save-btn{
   border:none;
   cursor:pointer;
   font-weight:600;
@@ -75,90 +126,158 @@ header{
 }
 
 .admin-btn{
-  background:linear-gradient(45deg,#00d4ff,#0099ff);
+
+  background:
+  linear-gradient(
+    45deg,
+    #00d4ff,
+    #0099ff
+  );
+
   color:white;
-  padding:12px 18px;
-  border-radius:14px;
+
+  padding:
+  12px 18px;
+
+  border-radius:
+  14px;
 }
 
 .admin-btn:hover{
-  transform:scale(1.05);
+  transform:
+  scale(1.05);
 }
 
 .buy-btn{
+
   width:100%;
+
   padding:12px;
-  border-radius:12px;
-  background:#00ff99;
+
   margin-top:10px;
+
+  border-radius:12px;
+
+  background:#00ff99;
 }
 
 .buy-btn:hover{
-  transform:scale(1.03);
+  transform:
+  scale(1.03);
 }
 
 .save-btn{
+
   width:100%;
+
   padding:14px;
+
   border-radius:14px;
-  background:linear-gradient(45deg,#00d4ff,#0099ff);
+
   color:white;
+
+  background:
+  linear-gradient(
+    45deg,
+    #00d4ff,
+    #0099ff
+  );
+
   margin-top:10px;
 }
 
 .save-btn:hover{
-  transform:scale(1.02);
+  transform:
+  scale(1.02);
 }
 
-/* HERO */
+/* ==========================
+   HERO
+========================== */
+
 .hero{
   text-align:center;
-  padding:50px 20px;
-  animation:fade 1s ease;
+  padding:
+  60px 20px;
+
+  animation:
+  fade 1s ease;
 }
 
 .hero h1{
-  font-size:32px;
-  margin-bottom:10px;
+  font-size:34px;
+}
+
+.hero span{
+  color:#00d4ff;
 }
 
 .hero p{
+  margin-top:10px;
   opacity:0.8;
 }
 
 @keyframes fade{
+
   from{
     opacity:0;
-    transform:translateY(20px);
+    transform:
+    translateY(20px);
   }
+
   to{
     opacity:1;
-    transform:translateY(0);
+    transform:
+    translateY(0);
   }
+
 }
 
-/* MENU */
+/* ==========================
+   MENU
+========================== */
+
 .menu{
   display:grid;
-  grid-template-columns:repeat(2,1fr);
+
+  grid-template-columns:
+  repeat(2,1fr);
+
   gap:15px;
+
   padding:20px;
 }
 
 .card{
-  background:rgba(255,255,255,0.08);
-  backdrop-filter:blur(12px);
-  border-radius:22px;
+
+  background:
+  rgba(255,255,255,0.08);
+
+  backdrop-filter:
+  blur(10px);
+
+  border-radius:
+  22px;
+
   padding:25px;
+
   text-align:center;
+
   cursor:pointer;
+
   transition:0.3s;
-  box-shadow:0 0 25px rgba(0,0,0,0.25);
-  animation:fade .8s ease;
+
+  animation:
+  fade .7s ease;
+
+  box-shadow:
+  0 0 20px
+  rgba(0,0,0,.3);
 }
 
 .card:hover{
-  transform:translateY(-7px);
+  transform:
+  translateY(-8px);
 }
 
 .card h2{
@@ -173,38 +292,126 @@ header{
   text-decoration:none;
 }
 
-/* TITLE */
+/* ==========================
+   ADMIN PANEL
+========================== */
+
+.admin-section{
+
+  margin:20px;
+
+  padding:20px;
+
+  border-radius:22px;
+
+  background:
+  rgba(255,255,255,0.08);
+
+  backdrop-filter:
+  blur(12px);
+
+  animation:
+  fade .5s ease;
+}
+
+.admin-section h2{
+  text-align:center;
+  margin-bottom:15px;
+}
+
+.admin-section input,
+.admin-section textarea{
+
+  width:100%;
+
+  border:none;
+
+  outline:none;
+
+  margin:8px 0;
+
+  padding:14px;
+
+  border-radius:14px;
+
+  background:#2a2a2a;
+
+  color:white;
+}
+
+.admin-section textarea{
+  resize:none;
+  min-height:120px;
+}
+
+/* ==========================
+   TITLE
+========================== */
+
 .section-title{
+
   font-size:24px;
   font-weight:bold;
+
   padding:20px;
 }
 
-/* PRODUK */
+/* ==========================
+   PRODUK
+========================== */
+
 .products{
+
   padding:20px;
+
   display:grid;
+
   grid-template-columns:
-  repeat(auto-fit,minmax(230px,1fr));
+  repeat(
+    auto-fit,
+    minmax(
+      230px,
+      1fr
+    )
+  );
+
   gap:20px;
 }
 
 .product{
-  background:rgba(255,255,255,0.08);
-  backdrop-filter:blur(12px);
+
+  background:
+  rgba(
+    255,
+    255,
+    255,
+    0.08
+  );
+
   border-radius:22px;
+
   overflow:hidden;
+
   transition:0.3s;
-  animation:fade .5s ease;
+
+  animation:
+  fade .6s ease;
+
+  backdrop-filter:
+  blur(12px);
 }
 
 .product:hover{
-  transform:translateY(-5px);
+  transform:
+  translateY(-5px);
 }
 
 .product img{
+
   width:100%;
+
   height:220px;
+
   object-fit:cover;
 }
 
@@ -217,53 +424,86 @@ header{
 }
 
 .product-content p{
-  font-size:14px;
   opacity:0.8;
+  font-size:14px;
 }
 
-/* BUTTON BG */
+/* ==========================
+   BG BUTTON
+========================== */
+
 .bg-btn{
+
   position:fixed;
+
   bottom:20px;
   right:20px;
+
   width:60px;
   height:60px;
+
   border:none;
+
   border-radius:50%;
-  cursor:pointer;
+
   font-size:22px;
+
+  cursor:pointer;
+
   background:#ff9800;
-  box-shadow:0 0 20px rgba(0,0,0,0.4);
+
   z-index:999;
-  transition:0.3s;
+
+  transition:0.4s;
+
+  box-shadow:
+  0 0 20px
+  rgba(0,0,0,.3);
 }
 
 .bg-btn:hover{
-  transform:rotate(180deg);
+  transform:
+  rotate(180deg);
 }
 
-/* MODAL */
+/* ==========================
+   LOGIN MODAL
+========================== */
+
 .modal{
+
   display:none;
+
   position:fixed;
+
   top:0;
   left:0;
+
   width:100%;
   height:100%;
-  background:rgba(0,0,0,0.75);
+
   justify-content:center;
   align-items:center;
+
+  background:
+  rgba(0,0,0,.7);
+
   z-index:9999;
-  padding:20px;
 }
 
 .modal-content{
-  width:100%;
-  max-width:420px;
-  background:#1b1b1b;
-  border-radius:25px;
+
+  width:90%;
+  max-width:400px;
+
+  background:#1c1c1c;
+
+  border-radius:24px;
+
   padding:25px;
-  animation:fade .4s ease;
+
+  animation:
+  fade .4s ease;
 }
 
 .modal-content h2{
@@ -271,42 +511,46 @@ header{
   margin-bottom:15px;
 }
 
-.modal-content input,
-.modal-content textarea{
+.modal-content input{
+
   width:100%;
-  border:none;
-  outline:none;
-  padding:14px;
+
   margin:8px 0;
+
+  border:none;
+
+  outline:none;
+
+  padding:14px;
+
   border-radius:14px;
+
   background:#2a2a2a;
+
   color:white;
 }
 
-.modal-content textarea{
-  resize:none;
-  min-height:120px;
-}
+/* ==========================
+   HIDDEN
+========================== */
 
-.modal-content input[type="file"]{
-  background:#2a2a2a;
-  padding:12px;
-}
-
-/* HIDDEN */
 .hidden{
   display:none;
 }
 
-/* RESPONSIVE */
+/* ==========================
+   RESPONSIVE
+========================== */
+
 @media(max-width:600px){
+
+  .menu{
+    grid-template-columns:
+    1fr;
+  }
 
   .hero h1{
     font-size:26px;
-  }
-
-  .menu{
-    grid-template-columns:1fr;
   }
 
   .logo{
