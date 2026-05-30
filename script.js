@@ -19,9 +19,10 @@ import {
 }
 from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
 
-/* =========================
+/* ===================================
    FIREBASE CONFIG
-========================= */
+=================================== */
+
 const firebaseConfig = {
   apiKey: "ISI_API_KEY",
   authDomain: "ISI_AUTHDOMAIN",
@@ -31,108 +32,168 @@ const firebaseConfig = {
   appId: "ISI_APP_ID"
 };
 
-/* =========================
-   INIT FIREBASE
-========================= */
-const app = initializeApp(firebaseConfig);
+/* ===================================
+   INISIALISASI FIREBASE
+=================================== */
 
-const db = getFirestore(app);
-const storage = getStorage(app);
+const app =
+initializeApp(firebaseConfig);
 
-/* =========================
-   OPEN MODAL
-========================= */
-window.openLogin = function(){
+const db =
+getFirestore(app);
 
-  document.getElementById(
-    "loginModal"
-  ).style.display = "flex";
+const storage =
+getStorage(app);
+
+/* ===================================
+   BUKA LOGIN
+=================================== */
+
+window.openLogin =
+function(){
+
+  document
+    .getElementById(
+      "loginModal"
+    )
+    .style.display =
+    "flex";
 };
 
-window.openAdminPanel = function(){
-
-  document.getElementById(
-    "adminPanel"
-  ).style.display = "flex";
-};
-
-/* =========================
+/* ===================================
    LOGIN ADMIN
-========================= */
-window.loginAdmin = function(){
+=================================== */
+
+window.loginAdmin =
+function(){
 
   const username =
-  document.getElementById(
-    "username"
-  ).value;
+  document
+    .getElementById(
+      "username"
+    )
+    .value;
 
   const password =
-  document.getElementById(
-    "password"
-  ).value;
+  document
+    .getElementById(
+      "password"
+    )
+    .value;
 
   if(
-    username === "Dzaki" &&
-    password === "Raffa"
+    username ===
+    "Dzaki" &&
+
+    password ===
+    "Raffa"
   ){
 
     alert(
-      "Login Admin Berhasil ✅"
+      "Login berhasil ✅"
     );
 
-    document.getElementById(
-      "loginModal"
-    ).style.display = "none";
+    /* tutup modal */
+    document
+      .getElementById(
+        "loginModal"
+      )
+      .style.display =
+      "none";
 
-    document.getElementById(
-      "loginBtn"
-    ).classList.add(
-      "hidden"
-    );
+    /* sembunyikan tombol login */
+    document
+      .getElementById(
+        "loginBtn"
+      )
+      .classList
+      .add(
+        "hidden"
+      );
 
-    document.getElementById(
-      "addProductBtn"
-    ).classList.remove(
-      "hidden"
-    );
+    /* munculkan tombol tambah produk */
+    document
+      .getElementById(
+        "addProductBtn"
+      )
+      .classList
+      .remove(
+        "hidden"
+      );
 
   }else{
 
     alert(
-      "Username / Password Salah ❌"
+      "Username atau Password salah ❌"
     );
   }
 };
 
-/* =========================
+/* ===================================
+   BUKA PANEL TAMBAH PRODUK
+=================================== */
+
+window.openAdminPanel =
+function(){
+
+  document
+    .getElementById(
+      "adminPanel"
+    )
+    .classList
+    .remove(
+      "hidden"
+    );
+
+  window.scrollTo({
+    top:
+    document.body
+    .scrollHeight,
+
+    behavior:
+    "smooth"
+  });
+};
+
+/* ===================================
    TAMBAH PRODUK
-========================= */
+=================================== */
+
 window.addProduct =
 async function(){
 
   const title =
-  document.getElementById(
-    "title"
-  ).value;
+  document
+    .getElementById(
+      "title"
+    )
+    .value;
 
   const desc =
-  document.getElementById(
-    "desc"
-  ).value;
+  document
+    .getElementById(
+      "desc"
+    )
+    .value;
 
   const image =
-  document.getElementById(
-    "img"
-  ).files[0];
+  document
+    .getElementById(
+      "img"
+    )
+    .files[0];
 
+  /* VALIDASI */
   if(
     !title ||
     !desc ||
     !image
   ){
+
     alert(
       "Isi semua data!"
     );
+
     return;
   }
 
@@ -142,11 +203,13 @@ async function(){
       "Uploading gambar..."
     );
 
+    /* nama file unik */
     const fileName =
     Date.now() +
     "_" +
     image.name;
 
+    /* upload ke firebase storage */
     const storageRef =
     ref(
       storage,
@@ -159,20 +222,28 @@ async function(){
       image
     );
 
+    /* ambil url gambar */
     const imageUrl =
     await getDownloadURL(
       storageRef
     );
 
+    /* simpan produk */
     await addDoc(
       collection(
         db,
         "products"
       ),
       {
+        title:
         title,
+
+        desc:
         desc,
-        img: imageUrl,
+
+        img:
+        imageUrl,
+
         createdAt:
         Date.now()
       }
@@ -182,46 +253,56 @@ async function(){
       "Produk berhasil ditambahkan ✅"
     );
 
-    document.getElementById(
-      "title"
-    ).value = "";
+    /* reset form */
+    document
+      .getElementById(
+        "title"
+      )
+      .value =
+      "";
 
-    document.getElementById(
-      "desc"
-    ).value = "";
+    document
+      .getElementById(
+        "desc"
+      )
+      .value =
+      "";
 
-    document.getElementById(
-      "img"
-    ).value = "";
-
-    document.getElementById(
-      "adminPanel"
-    ).style.display =
-    "none";
+    document
+      .getElementById(
+        "img"
+      )
+      .value =
+      "";
 
   }catch(error){
 
-    console.error(error);
+    console.error(
+      error
+    );
 
     alert(
-      "Gagal upload produk ❌"
+      "Upload gagal ❌"
     );
   }
 };
 
-/* =========================
+/* ===================================
    REALTIME PRODUK
-========================= */
-const products =
+=================================== */
+
+const productsContainer =
 document.getElementById(
   "products"
 );
 
-const q = query(
+const q =
+query(
   collection(
     db,
     "products"
   ),
+
   orderBy(
     "createdAt",
     "desc"
@@ -232,8 +313,8 @@ onSnapshot(
   q,
   (snapshot)=>{
 
-    products.innerHTML =
-    "";
+    productsContainer
+    .innerHTML = "";
 
     snapshot.forEach(
       (doc)=>{
@@ -241,12 +322,14 @@ onSnapshot(
         const data =
         doc.data();
 
-        products.innerHTML += `
+        productsContainer
+        .innerHTML +=
+
+        `
         <div class="product">
 
           <img
             src="${data.img}"
-            alt="produk"
           >
 
           <div class="product-content">
@@ -260,11 +343,13 @@ onSnapshot(
             </p>
 
             <a
-            href="https://wa.me/628131123927"
-            target="_blank">
+              href="https://wa.me/628131123927"
+              target="_blank"
+            >
 
               <button
-              class="buy-btn">
+                class="buy-btn"
+              >
                 Beli Sekarang
               </button>
 
@@ -278,43 +363,30 @@ onSnapshot(
   }
 );
 
-/* =========================
-   GANTI BACKGROUND
-========================= */
-let bg = 1;
+/* ===================================
+   SCROLL KE PRODUK
+=================================== */
 
-window.changeBg =
-function(){
-
-  bg++;
-
-  if(bg > 4){
-    bg = 1;
-  }
-
-  document.body.className =
-  "bg" + bg;
-};
-
-/* =========================
-   SCROLL PRODUK
-========================= */
 window.scrollToProducts =
 function(){
 
-  window.scrollTo({
-    top:
-    document.body
-    .scrollHeight,
+  const products =
+  document
+    .getElementById(
+      "products"
+    );
 
+  products
+  .scrollIntoView({
     behavior:
     "smooth"
   });
 };
 
-/* =========================
-   GROUP / DONASI
-========================= */
+/* ===================================
+   OPEN GROUP
+=================================== */
+
 window.openGroup =
 function(){
 
@@ -323,6 +395,10 @@ function(){
     "_blank"
   );
 };
+
+/* ===================================
+   OPEN DONASI
+=================================== */
 
 window.openDonasi =
 function(){
@@ -333,33 +409,48 @@ function(){
   );
 };
 
-/* =========================
-   CLOSE MODAL
-========================= */
-window.onclick =
-function(e){
+/* ===================================
+   GANTI BACKGROUND
+=================================== */
 
-  const login =
-  document.getElementById(
-    "loginModal"
-  );
+let bg = 1;
 
-  const admin =
-  document.getElementById(
-    "adminPanel"
-  );
+window.changeBg =
+function(){
+
+  bg++;
 
   if(
-    e.target === login
+    bg > 4
   ){
-    login.style.display =
-    "none";
+    bg = 1;
   }
 
+  document.body
+  .className =
+  "bg" + bg;
+};
+
+/* ===================================
+   TUTUP MODAL LOGIN
+=================================== */
+
+window.onclick =
+function(event){
+
+  const loginModal =
+  document
+    .getElementById(
+      "loginModal"
+    );
+
   if(
-    e.target === admin
+    event.target ===
+    loginModal
   ){
-    admin.style.display =
+
+    loginModal
+    .style.display =
     "none";
   }
 };
